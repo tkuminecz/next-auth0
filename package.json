@@ -1,0 +1,43 @@
+{
+  "name": "next-auth0",
+  "version": "0.1.0",
+  "description": "Utilities for integrating Auth0 into a Next.js app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkuminecz/next-auth0.git"
+  },
+  "keywords": [
+    "next",
+    "auth0"
+  ],
+  "author": "Tim Kuminecz <tkuminecz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tkuminecz/next-auth0/issues"
+  },
+  "homepage": "https://github.com/tkuminecz/next-auth0#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "lint": "npx tslint --project .",
+    "test": "npx npm-run-all lint typecheck",
+    "typecheck": "npx tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/auth0-js": "^9.10.1",
+    "@types/js-cookie": "^2.2.2",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/node": "^11.13.6",
+    "npm-run-all": "^4.1.5",
+    "tslint": "^5.16.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.4.4"
+  },
+  "dependencies": {
+    "auth0-js": "^9.10.2",
+    "js-cookie": "^2.2.0",
+    "jwt-decode": "^2.2.0",
+    "next-cookies": "^1.1.2"
+  }
+}

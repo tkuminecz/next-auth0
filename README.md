@@ -1,2 +1,2 @@
 # next-auth0
-Utilities for integration Auth0 into a Next.js app
+Utilities for integrating Auth0 into a Next.js app
