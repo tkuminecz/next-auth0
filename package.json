@@ -1,6 +1,6 @@
 {
   "name": "next-auth0",
-  "version": "0.1.0-beta.3",
+  "version": "0.1.0-beta.5",
   "description": "Utilities for integrating Auth0 into a Next.js app",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx rimraf dist && npx tsc",
     "lint": "npx tslint --project .",
     "test": "npx npm-run-all lint typecheck",
     "typecheck": "npx tsc --noEmit"
@@ -37,6 +37,7 @@
     "next": "^8.1.0",
     "npm-run-all": "^4.1.5",
     "react": "^16.8.6",
+    "rimraf": "^2.6.3",
     "tslint": "^5.16.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.4.4"

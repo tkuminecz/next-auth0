@@ -166,7 +166,6 @@ export function defaultPage (Page) {
     render () {
       return (
         <>
-          <p>default page</p>
           <Page {...this.props}/>
         </>
       )
@@ -175,12 +174,13 @@ export function defaultPage (Page) {
 }
 
 export function SecurePage (NotAuthorized) {
-  return function (Page) {
-    return class extends React.Component {
+  function securePageHoc (Page) {
+    return class extends React.Component<{ isAuthenticated: boolean }> {
       static displayName = `SecurePage(${Page.displayName || Page.name})`
 
       render () {
-        return (!(this.props as any).isAuthorized)
+        const { isAuthenticated = false } = this.props
+        return (isAuthenticated)
           ? (
             <>
               <p>secure page</p>
@@ -191,4 +191,5 @@ export function SecurePage (NotAuthorized) {
       }
     }
   }
+  return (Page) => defaultPage(securePageHoc(Page))
 }
