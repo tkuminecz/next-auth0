@@ -1,6 +1,6 @@
 {
   "name": "next-auth0",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-beta.2",
   "description": "Utilities for integrating Auth0 into a Next.js app",
   "repository": {
     "type": "git",
@@ -18,6 +18,9 @@
   "homepage": "https://github.com/tkuminecz/next-auth0#readme",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "npx tsc",
     "lint": "npx tslint --project .",
