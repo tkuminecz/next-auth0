@@ -38,13 +38,11 @@ class AuthHelper {
   }
 
   private getBaseUrl () {
-    return this.opts.baseUrl || typeof window !== 'undefined' && `${window.location.protocol}//${window.location.host}`
+    return this.opts.baseUrl || `${window.location.protocol}//${window.location.host}`
   }
 
   login = () => {
-    if (typeof window !== 'undefined') {
-      return this.getAuth0(this.getOptions()).authorize()
-    }
+    return this.getAuth0(this.getOptions()).authorize()
   }
 
   parseHash = async () => {
@@ -64,9 +62,9 @@ class AuthHelper {
     return setToken(result.idToken, result.accessToken)
   }
 
-  logout = () => {
+  logout = (returnTo: string) => {
     unsetToken()
-    return this.getAuth0().logout({ returnTo: this.getBaseUrl() })
+    return this.getAuth0().logout({ returnTo })
   }
 
   SignInPage = () =>
