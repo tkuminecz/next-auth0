@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/tkuminecz/next-auth0#readme",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "build": "npx tsc",
     "lint": "npx tslint --project .",
@@ -28,11 +28,19 @@
     "@types/auth0-js": "^9.10.1",
     "@types/js-cookie": "^2.2.2",
     "@types/jwt-decode": "^2.2.1",
-    "@types/node": "^11.13.6",
+    "@types/next": "^8.0.4",
+    "@types/node": "^11.13.8",
+    "@types/react": "^16.8.14",
+    "next": "^8.1.0",
     "npm-run-all": "^4.1.5",
+    "react": "^16.8.6",
     "tslint": "^5.16.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.4.4"
+  },
+  "peerDependencies": {
+    "next": "^8.1.0",
+    "react": "^16.8.6"
   },
   "dependencies": {
     "auth0-js": "^9.10.2",

@@ -5,9 +5,9 @@
     "baseUrl": ".",
     "declaration": true,
     "experimentalDecorators": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "lib": ["dom", "es2016"],
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -16,6 +16,6 @@
     "removeComments": false,
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "es2016"
+    "target": "es2015"
   }
 }
