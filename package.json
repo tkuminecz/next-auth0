@@ -1,6 +1,6 @@
 {
   "name": "next-auth0",
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0-beta.3",
   "description": "Utilities for integrating Auth0 into a Next.js app",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "url": "https://github.com/tkuminecz/next-auth0/issues"
   },
   "homepage": "https://github.com/tkuminecz/next-auth0#readme",
-  "main": "dist/index.js",
+  "main": "dist/index.jsx",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
