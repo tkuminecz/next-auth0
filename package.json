@@ -16,7 +16,7 @@
     "url": "https://github.com/tkuminecz/next-auth0/issues"
   },
   "homepage": "https://github.com/tkuminecz/next-auth0#readme",
-  "main": "dist/index.jsx",
+  "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
