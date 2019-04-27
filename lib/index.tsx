@@ -183,7 +183,6 @@ export function SecurePage (NotAuthorized) {
         return (isAuthenticated)
           ? (
             <>
-              <p>secure page</p>
               <Page {...this.props}/>
             </>
           )
