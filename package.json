@@ -1,6 +1,6 @@
 {
   "name": "next-auth0",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Utilities for integrating Auth0 into a Next.js app",
   "repository": {
     "type": "git",
