@@ -1,9 +1,13 @@
 version: 2
 
+defaults: &defaults
+  docker:
+    - image: circleci/node:10
+  working_directory: ~/repo
+
 jobs:
   test:
-    docker:
-      - image: circleci/node:10
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -16,13 +20,16 @@ jobs:
           paths:
             - node_modules
           key: v1-deps-{{ checksum "package-lock.json" }}
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
 
   publish:
-    docker:
-      - image: circleci/node:10
+    <<: *defaults
     steps:
-      - attach_workspace
-      - run: echo "//registry.npmjs.org:/:authToken=$npm_TOKEN" > ${CIRCLE_WORKING_DIRECTORY}/.npmrc
+      - attach_workspace:
+          at: ~/repo
+      - run: echo "//registry.npmjs.org:/:authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run: npm publish
 
 
@@ -34,6 +41,9 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+            branches:
+              ignore:
+                - master
       - publish:
           requires:
             - test
