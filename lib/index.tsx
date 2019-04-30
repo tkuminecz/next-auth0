@@ -137,6 +137,7 @@ class SignedInPage extends React.Component<{ bounceTo: string, loginCallback: Fu
   async componentDidMount () {
     await this.props.loginCallback()
     Router.push(this.props.bounceTo)
+      .catch(err => console.error(err))
   }
 
   render = () => null
@@ -154,7 +155,7 @@ export function defaultPage (Page) {
     static displayName = `DefaultPage(${Page.displayName || Page.name})`
 
     static async getInitialProps (ctx) {
-      const pageProps = (Page as any).getInitialProps ? await Promise.resolve((Page as any).getInitialProps(ctx)) : {}
+      const pageProps = Page.getInitialProps ? await Promise.resolve(Page.getInitialProps(ctx)) : {}
       const authUser = getUser(ctx)
       return {
         ...pageProps,
