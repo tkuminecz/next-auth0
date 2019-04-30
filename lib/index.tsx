@@ -8,7 +8,8 @@ import Router from 'next/router'
 export interface AuthHelperOpts {
   clientId: string,
   domain: string,
-  baseUrl?: string
+  baseUrl?: string,
+  loginCallbackPath?: string
 }
 
 export type NextContext = any
@@ -23,18 +24,12 @@ class AuthHelper {
     private readonly opts: AuthHelperOpts
   ) {}
 
-  private getAuth0 (options?: auth0.AuthOptions) {
-    return new auth0.WebAuth(options)
-  }
-
-  private getOptions () {
-    return {
+  private getAuth0 (options: Partial<auth0.AuthOptions> = {}) {
+    return new auth0.WebAuth({
       clientID: this.opts.clientId,
       domain: this.opts.domain,
-      responseType: 'token id_token',
-      redirectUri: `${this.getBaseUrl()}/auth/signed-in`,
-      scope: 'openid profile email'
-    }
+      ...options
+    })
   }
 
   private getBaseUrl () {
@@ -42,12 +37,17 @@ class AuthHelper {
   }
 
   login = () => {
-    return this.getAuth0(this.getOptions()).authorize()
+    const auth0 = this.getAuth0({
+      redirectUri: `${this.getBaseUrl()}${this.opts.loginCallbackPath || '/auth/signed-in'}`,
+      responseType: 'token id_token',
+      scope: 'openid profile email'
+    })
+    return auth0.authorize()
   }
 
   parseHash = async () => {
     return new Promise<auth0.Auth0DecodedHash>((resolve, reject) => {
-      this.getAuth0(this.getOptions()).parseHash((err, result) => {
+      this.getAuth0().parseHash((err, result) => {
         if (err) {
           reject(err)
         } else {
@@ -62,8 +62,10 @@ class AuthHelper {
     return setToken(result.idToken, result.accessToken)
   }
 
-  logout = (returnTo: string) => {
+  logout = () => {
     unsetToken()
+    const returnTo = this.getBaseUrl()
+    console.log('returnTo', returnTo)
     return this.getAuth0().logout({ returnTo })
   }
 
